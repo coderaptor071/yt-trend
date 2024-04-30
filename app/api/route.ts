@@ -4,7 +4,7 @@ import { parse } from "url";
 
 const service = google.youtube({
   version: "v3",
-  auth: `AIzaSyC_sq3L5rVd9FB_XoDPZrzTAYgA_f0h2Bk`, // Remove unnecessary backticks
+  auth: ``, // Remove unnecessary backticks
 });
 
 // Export the API route handler (uppercase GET)
