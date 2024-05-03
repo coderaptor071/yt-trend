@@ -1,7 +1,7 @@
 "use client";
 import React, { ReactNode } from "react";
 import Link from "next/link";
-import countryFlagEmoji from "country-flag-emoji";
+import countriesData from '@/countriesData.json'
 import {HandleQueryFilterType} from '@/types/ComponentPropsType'
 
 const catCode = {
@@ -33,7 +33,7 @@ const Sidebar = ( {handleQueryFilter} : HandleQueryFilterType ) => {
   // const handleCategoryChange = (value: number) => {};
 
   return (
-    <aside className="flex flex-col  justify-center  p-4 items-center rounded-md border-blue-800 border-opacity-50 backdrop-brightness-100 border-solid border-[1px] w-fit h-2/5 mt-14 max-md:w-1/5 max-sm:w-[25vw] max-sm:h-fit max-sm:ml-4 z-30 max-sm:border-none ">
+    <aside className="flex flex-col  justify-center  p-4 items-center rounded-md border-blue-800 border-opacity-50 backdrop-brightness-100 border-solid border-[1px] w-fit h-2/5 mt-16 max-md:w-1/5 max-sm:w-[25vw] max-sm:h-fit max-sm:ml-4 z-30 max-sm:border-none ">
       <h1 className="flex text-xl mt-3 max-sm:text-[15px] max-sm:mt-4 max-sm:justify-start max-sm:align-top">
         Trending by Category
       </h1>
@@ -55,7 +55,7 @@ const Sidebar = ( {handleQueryFilter} : HandleQueryFilterType ) => {
       </ul>
       <h1 className="flex text-xl mt-4 backdrop-blur-md max-sm:mt-1  max-sm:text-[15px]">Top Countries</h1>
       <ul className={`list-disc flex flex-col mt-6 max-sm:mt-1 max-sm:text-[12px]`}>
-        {countryFlagEmoji.list
+        {countriesData
           .filter((el: any) => countries.includes(el.name))
           .map((el: any) => (
             <Link className="hover:cursor-pointer flex hover:text-red-800 hover:brightness-150  hover:scale-110 transition ease-in-out 500 hover:text-xl" href="/" key={el.code}>

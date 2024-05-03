@@ -2,41 +2,16 @@
 import React, {useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import countryFlagEmoji from "country-flag-emoji";
+import countriesData from '@/countriesData.json'
 
-const countries = [
-    "Algeria",
-    "Argentina",
-    "Australia",
-    "Brazil",
-    "Canada",
-    "Colombia",
-    "Egypt",
-    "Ethiopia",
-    "France",
-    "Germany",
-    "India",
-    "Indonesia",
-    "Iran",
-    "Israel",
-    "Italy",
-    "Japan",
-    "Mexico",
-    "Nigeria",
-    "Pakistan",
-    "Philippines",
-    "Russia",
-    "South Africa",
-    "Turkey",
-    "United Kingdom",
-    "United States"
-  ];
 
 const Navbar = () => {
+
     const [isVisible, setVisible] = useState(false)
     function handleCountriesList(){
         setVisible(prevstate => !prevstate)
     }
+    
   return (
       <header className=" flex flex-col   max-sm:mx-0 justify-around max-sm:w-screen">
 
@@ -58,9 +33,9 @@ const Navbar = () => {
           </ul>
         </nav>
       
-      <ul className={`${isVisible ? 'bg-gray-400 bg-opacity-30  mt-8  grid grid-cols-9 grid-rows-3 gap-1 pt-4 max-sm:grid-cols-3 max-md:grid-cols-6 rounded-md transition-all 300 ease-in-out w-[90vw] max-sm:text-[10px] ' : 'hidden' }`}>
+      <ul className={`${isVisible ? 'bg-gray-400 bg-opacity-30  mt-8 mx-auto grid grid-cols-9 grid-rows-3 gap-1 pt-4 max-sm:grid-cols-3 max-md:grid-cols-6 rounded-md transition-all 300 ease-in-out w-[90vw] max-sm:text-[10px] ' : 'hidden' }`}>
 
-        { countryFlagEmoji.list.filter((el:any) => countries.includes(el.name) ).map((el: any) => (
+        { countriesData.map((el: any) => (
             <Link className="hover:cursor-pointer hover:text-red-800 hover:brightness-150" href='/' key={el.code}>
           <div className="flex px-4 transition-all duration-300 ease-in-out hover:text-xl" >
             {el.emoji}
