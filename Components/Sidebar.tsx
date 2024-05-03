@@ -2,6 +2,7 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import countryFlagEmoji from "country-flag-emoji";
+import {HandleQueryFilterType} from '@/types/ComponentPropsType'
 
 const catCode = {
   All: 999,
@@ -28,7 +29,7 @@ const countries = [
   "United States",
 ];
 
-const Sidebar = ({handleQueryFilter}) => {
+const Sidebar = ( {handleQueryFilter} : HandleQueryFilterType ) => {
   // const handleCategoryChange = (value: number) => {};
 
   return (

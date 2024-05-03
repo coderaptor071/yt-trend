@@ -1,20 +1,20 @@
-"use client"
+"use client";
 import Sidebar from "@/Components/Sidebar";
 import CardSection from "@/Components/CardSection";
 import { useState } from "react";
-
+import { QueryStateType } from "@/types/ComponentPropsType";
 
 const ScreenComponentWrapper = () => {
 
-  const [query, setQuery] = useState({
-    Countrycode : null,
-    Catcode : null
-  })
-  
-  const handleQueryFilter = (filter : any) =>{
+  const [query, setQuery] = useState<QueryStateType>({
+    Countrycode: null,
+    Catcode: null,
+  });
 
-    setQuery(prevState => ({...prevState, ...filter}) )
-  }
+  const handleQueryFilter = (filter: QueryStateType ): void => {
+
+    setQuery((prevState) => ({ ...prevState, ...filter }));
+  };
 
   return (
     <section className="grid grid-cols-5 gap-1 max-sm:grid-cols-3">
@@ -24,7 +24,6 @@ const ScreenComponentWrapper = () => {
       <div className=" col-span-4 max-sm:col-span-2">
         <CardSection queryState={query} />
       </div>
-
     </section>
   );
 };
