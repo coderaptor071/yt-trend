@@ -14,10 +14,12 @@ function deleteKey(obj: any, key: string): any {
 
 // Export the API route handler (uppercase GET)
 export const GET = async (req: Request, res: Response) => {
+  
+  const { query } = parse(req.url, true);
+  const code = query.Countrycode;
+  const Catcode = query.Catcode;
+
   try {
-    const { query } = parse(req.url, true);
-    const code = query.Countrycode;
-    const Catcode = query.Catcode;
 
     if (code && Catcode) {
       const reqData = {
