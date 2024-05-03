@@ -4,18 +4,40 @@ import { parse } from "url";
 
 const service = google.youtube({
   version: "v3",
-  auth: ``, // Remove unnecessary backticks
+  auth: process.env.SECRET_YT_API_KEY, // Remove unnecessary backticks
 });
 
 // Export the API route handler (uppercase GET)
 export const GET = async (req: Request, res: Response) => {
   try {
     const { query } = parse(req.url, true);
-    const code = query.code;
+    const code = query.Countrycode;
     const Catcode = query.Catcode;
 
-    if (code) {
-      console.log("req.query", code);
+    function deleteKey(obj:any, key: string) : any{
+      delete obj[key]
+      return obj
+    }
+
+    if(code && Catcode){
+      const reqData = {
+        part: ["snippet, contentDetails, statistics"],
+        chart: "mostPopular",
+        maxResults: 10,
+        regionCode: code.toString(),
+        videoCategoryId: Catcode.toString(),
+      }
+      const { data } = await service.videos.list(Catcode === '999' ? deleteKey(reqData, 'videoCategoryId') : reqData);
+      return NextResponse.json(
+        { data: data.items },
+        {
+          status: 200,
+        }
+      );
+    }
+
+    else if (code) {
+
 
       const { data } = await service.videos.list({
         part: ["snippet, contentDetails, statistics"],
@@ -29,16 +51,17 @@ export const GET = async (req: Request, res: Response) => {
           status: 200,
         }
       );
-    }
-    else if (Catcode) {
-      console.log("here in category");
-      const { data } = await service.videos.list({
+    } else if (Catcode) {
+   
+      const reqData = {
         part: ["snippet, contentDetails, statistics"],
         chart: "mostPopular",
         maxResults: 10,
         regionCode: "IN",
         videoCategoryId: Catcode.toString(),
-      });
+      }
+
+      const { data } = await service.videos.list(Catcode === '999' ? deleteKey(reqData, 'videoCategoryId') : reqData);
       return NextResponse.json(
         { data: data.items },
         {

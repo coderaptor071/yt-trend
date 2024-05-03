@@ -1,11 +1,7 @@
-// "use client"
-import Image from "next/image";
 import Navbar from "@/Components/Navbar";
-import CardSection from "@/Components/CardSection";
-import axios from "axios";
-import Sidebar from "@/Components/Sidebar";
-// import { QueryClient, QueryClientProvider } from "react-query";
 import Footer from "@/Components/Footer";
+import ScreenComponentWrapper from '@/Components/screenComponentWrapper'
+// import { QueryClient, QueryClientProvider } from "react-query";
 
 export default function Home() {
 
@@ -13,18 +9,10 @@ export default function Home() {
 
   return (
     // <QueryClientProvider client={queryClient}>
-    <main className="flex flex-col">
+    <main className="flex flex-col w-screen">
       <Navbar/>
-      <section className="grid grid-cols-5 gap-0">
-        <div className="grid col-span-1">
-        <Sidebar/>
-        </div>
-      <div className="grid col-span-4 ">
-        <CardSection/></div>
-        <div>
-        </div>
-      </section>
-      <Footer></Footer>
+     <ScreenComponentWrapper/>
+      <Footer/>
     </main>
     // </QueryClientProvider>
   );
