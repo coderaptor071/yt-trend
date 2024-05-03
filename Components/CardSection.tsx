@@ -13,8 +13,7 @@ const CardSection = ({ queryState }: CardSectionType) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const BASE_URL = "https://yt-trend-zu4u.vercel.app";
-        const url = buildUrl(BASE_URL);
+        const url = buildUrl();
         const response = await axios.get(url);
         setData(response.data.data);
         setLoading(false);
@@ -26,10 +25,10 @@ const CardSection = ({ queryState }: CardSectionType) => {
     fetchData();
   }, [queryState]);
 
-  function buildUrl(BASE_URL: string) {
+  function buildUrl() {
     const { Countrycode, Catcode } = queryState;
-    let url = `${BASE_URL}/api/?`;
-    // if(Countrycode && Catcode )
+    let url = `/api/?`;
+
     if (Countrycode) url += `Countrycode=${Countrycode}&`;
     if (Catcode) url += `Catcode=${Catcode}&`;
     return url;
