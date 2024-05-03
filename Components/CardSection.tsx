@@ -13,7 +13,7 @@ const CardSection = ({ queryState }: CardSectionType) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const BASE_URL = "http://localhost:3000";
+        const BASE_URL = "https://yt-trend-zu4u.vercel.app";
         const url = buildUrl(BASE_URL);
         const response = await axios.get(url);
         setData(response.data.data);
@@ -76,3 +76,10 @@ const CardSection = ({ queryState }: CardSectionType) => {
 };
 
 export default CardSection;
+
+// export async function getServerSideProps() {
+//   const res = await fetch(`http://localhost:3000`)
+//   const data = await res.json()
+//   // Pass data to the page via props
+//   return { props: { data } }
+// }
