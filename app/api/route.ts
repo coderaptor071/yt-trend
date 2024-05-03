@@ -7,6 +7,11 @@ const service = google.youtube({
   auth: process.env.SECRET_YT_API_KEY, // Remove unnecessary backticks
 });
 
+function deleteKey(obj: any, key: string): any {
+  delete obj[key];
+  return obj;
+}
+
 // Export the API route handler (uppercase GET)
 export const GET = async (req: Request, res: Response) => {
   try {
@@ -14,31 +19,24 @@ export const GET = async (req: Request, res: Response) => {
     const code = query.Countrycode;
     const Catcode = query.Catcode;
 
-    function deleteKey(obj:any, key: string) : any{
-      delete obj[key]
-      return obj
-    }
-
-    if(code && Catcode){
+    if (code && Catcode) {
       const reqData = {
         part: ["snippet, contentDetails, statistics"],
         chart: "mostPopular",
         maxResults: 10,
         regionCode: code.toString(),
         videoCategoryId: Catcode.toString(),
-      }
-      const { data } = await service.videos.list(Catcode === '999' ? deleteKey(reqData, 'videoCategoryId') : reqData);
+      };
+      const { data } = await service.videos.list(
+        Catcode === "999" ? deleteKey(reqData, "videoCategoryId") : reqData
+      );
       return NextResponse.json(
         { data: data.items },
         {
           status: 200,
         }
       );
-    }
-
-    else if (code) {
-
-
+    } else if (code) {
       const { data } = await service.videos.list({
         part: ["snippet, contentDetails, statistics"],
         chart: "mostPopular",
@@ -52,16 +50,17 @@ export const GET = async (req: Request, res: Response) => {
         }
       );
     } else if (Catcode) {
-   
       const reqData = {
         part: ["snippet, contentDetails, statistics"],
         chart: "mostPopular",
         maxResults: 10,
         regionCode: "IN",
         videoCategoryId: Catcode.toString(),
-      }
+      };
 
-      const { data } = await service.videos.list(Catcode === '999' ? deleteKey(reqData, 'videoCategoryId') : reqData);
+      const { data } = await service.videos.list(
+        Catcode === "999" ? deleteKey(reqData, "videoCategoryId") : reqData
+      );
       return NextResponse.json(
         { data: data.items },
         {
