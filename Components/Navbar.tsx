@@ -16,13 +16,13 @@ const Navbar = () => {
       <header className=" flex flex-col   max-sm:mx-0 justify-around max-sm:w-screen ">
 
         <nav className="bg-[#0f1735]  bg-opacity-100 px-6 flex justify-between max-sm:justify-evenly py-2 items-center rounded-md max-sm:rounded-none  w-[90vw] mx-auto max-sm:m-0 max-sm:py-4 max-sm:w-screen ">
-          <Image className="max-sm:w-8 max-sm:h-8"
+          <Image className="max-sm:w-8 max-sm:h-8 animate-pulse "
             src="/nav.svg"
             alt="nav-logo"
             width={60}
             height={50}
           ></Image> 
-          <span className="text-xl text-red-800 brightness-200 max-sm:text-sm tracking-[3px] max-sm:text-[13px] max-sm:mx-4 "> Youtube Trending </span>
+          <span className="text-xl text-red-800 brightness-200 max-sm:text-sm tracking-[3px] max-sm:text-[13px] max-sm:mx-4"> Youtube Trending </span>
           <ul className="flex max-sm:text-[13px] justify-between">
             <li className=" hover:text-red-800 transition 500 ease-in-out hover:brightness-150 hover:scale-105">
               <Link href="/">Home</Link>

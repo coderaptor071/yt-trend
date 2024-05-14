@@ -33,7 +33,7 @@ const Sidebar = ( {handleQueryFilter} : HandleQueryFilterType ) => {
   // const handleCategoryChange = (value: number) => {};
 
   return (
-    <aside className="flex flex-col  justify-center  p-4 items-center rounded-md border-blue-800 border-opacity-50 backdrop-brightness-100 border-solid border-[1px] w-fit h-2/5 mt-20 max-md:w-1/5 max-sm:w-[25vw] max-sm:h-fit max-sm:ml-4 z-30 max-sm:border-none max-sm:mt-6">
+    <aside className="flex flex-col  justify-center  p-4 items-center rounded-md border-blue-800 border-opacity-50 backdrop-brightness-100 border-solid border-[1px] w-fit h-fit mt-20 max-md:w-1/5 max-sm:w-[25vw] max-sm:h-fit max-sm:ml-4 z-30 max-sm:border-none max-sm:mt-6">
       <h1 className="flex text-xl mt-3 max-sm:text-[15px] max-sm:mt-4 max-sm:justify-start max-sm:align-top">
         <span className="max-sm:hidden">Trending by </span>Category
       </h1>

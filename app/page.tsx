@@ -6,7 +6,7 @@ import ScreenComponentWrapper from '@/Components/screenComponentWrapper'
 export default function Home() {
 
   // const queryClient = new QueryClient()
-
+  
   return (
     // <QueryClientProvider client={queryClient}>
     <main className="flex flex-col w-screen">
